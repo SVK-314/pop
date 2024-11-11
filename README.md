@@ -1,1 +1,1 @@
-###### <th><center>БД фотоцентр</center></th>
+###### <center>БД фотоцентр</center>
