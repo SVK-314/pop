@@ -65,7 +65,7 @@
 
 
    [мине](https://www.bibliofond.ru/view.aspx?id=863432)
-   [мине2] (https://github.com/Evgeny121231/Bush_Kyrsova)
+   [мине2](https://github.com/Evgeny121231/Bush_Kyrsova)
 
    # Содержание
 ---
