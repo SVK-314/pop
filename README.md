@@ -66,7 +66,7 @@
 
    [мине](https://www.bibliofond.ru/view.aspx?id=863432)
    [мине2](https://github.com/Evgeny121231/Bush_Kyrsova)
-
+[мине2](https://gist.github.com/Jekins/2bf2d0638163f1294637)
    # Содержание
 ---
 ## Описание предметной области 
