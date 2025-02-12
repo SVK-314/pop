@@ -199,3 +199,6 @@
 ![image](https://github.com/user-attachments/assets/892d5796-94e3-4f1e-8657-37b8dc1cbec5)
 ## Построение концептуальной модели.
 ![image](https://github.com/user-attachments/assets/17d38073-16ac-457a-8504-b2ecc05255db)
+# Логическая структура БД.
+![image](https://github.com/user-attachments/assets/6d38225a-6af6-4a8b-9348-3239d3a92308)
+
