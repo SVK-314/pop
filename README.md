@@ -197,3 +197,5 @@
 
 ## Определение отношений и мощности отношений между объектами.
 ![image](https://github.com/user-attachments/assets/892d5796-94e3-4f1e-8657-37b8dc1cbec5)
+## Построение концептуальной модели.
+![image](https://github.com/user-attachments/assets/17d38073-16ac-457a-8504-b2ecc05255db)
