@@ -1,6 +1,6 @@
 CREATE TABLE klienti
 (
-    id_kli int PRIMARY KEY,
+    id_kli int PRIMARY KEY not null,
     familia CHARACTER VARYING(50) not null,
     ima CHARACTER VARYING(50) not null,
     otchestvo CHARACTER VARYING(50) not null,
@@ -9,10 +9,10 @@ CREATE TABLE klienti
 );
 CREATE TABLE zakazi
 (
-    id_zakaza int PRIMARY KEY,
-	foreign key id_ycl int references yclygi (id_ycl),
-    foreign key id_kli int references klienti (id_kli),
-	foreign key id_sotrydnika int references sotrydniki (id_sotrydnika),
+    id_zakaza int PRIMARY KEY not null,
+	foreign key id_ycl int not null,
+    foreign key id_kli int not null,
+	foreign key id_sotrydnika int not null, 
     datee date not null,
     status CHARACTER VARYING(50) not null
    
@@ -29,7 +29,7 @@ CREATE TABLE sotrydniki
 );
 CREATE TABLE yclygi
 (
-    id_ycl int PRIMARY KEY,
+    id_ycl int PRIMARY KEY not null,
     price money not null,
     name CHARACTER VARYING(50) not null
 );
