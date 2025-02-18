@@ -1,0 +1,35 @@
+CREATE TABLE klienti
+(
+    id_kli int PRIMARY KEY,
+    familia CHARACTER VARYING(50) not null,
+    ima CHARACTER VARYING(50) not null,
+    otchestvo CHARACTER VARYING(50) not null,
+    email CHARACTER VARYING(50) not null,
+    phone CHARACTER VARYING(20) not null
+);
+CREATE TABLE zakazi
+(
+    id_zakaza int PRIMARY KEY,
+	foreign key id_ycl int references yclygi (id_ycl),
+    foreign key id_kli int references klienti (id_kli),
+	foreign key id_sotrydnika int references sotrydniki (id_sotrydnika),
+    datee date not null,
+    status CHARACTER VARYING(50) not null
+   
+);
+CREATE TABLE sotrydniki
+(
+    id_sotrydnika int PRIMARY KEY not null,
+    familia CHARACTER VARYING(50) not null,
+    ima CHARACTER VARYING(50) not null,
+    otchestvo CHARACTER VARYING(50) not null,
+    datee date not null,
+    email CHARACTER VARYING(50) not null,
+    phone CHARACTER VARYING(20) not null
+);
+CREATE TABLE yclygi
+(
+    id_ycl int PRIMARY KEY,
+    price money not null,
+    name CHARACTER VARYING(50) not null
+);
