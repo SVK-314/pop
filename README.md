@@ -159,6 +159,7 @@
 ![image](https://github.com/user-attachments/assets/6d38225a-6af6-4a8b-9348-3239d3a92308)
 
 ## Создание таблиц
+```
 CREATE TABLE klienti
 (
     id_kli int PRIMARY KEY not null,
@@ -202,43 +203,75 @@ CREATE TABLE user
     password_hash CHARACTER VARYING(200),
     ia_admin bool
 );
+```
 
 ## Создание запросов
 Получить всех пользователей из базы данных
+```
 SELECT * FROM users;
-
+```
 Добавить нового пользователя 
+```
 INSERT INTO users (username, email, password_hash, is_admin) 
 VALUES ('new_user', 'new_user@example.com', 'hashed_password', FALSE);
-
+```
 Удалить пользователя
+```
 DELETE FROM users
 WHERE id = 1;  -- Замените 1 на фактический ID пользователя
-
+```
 Получить все заказы и информацию о клиентах
+```
 SELECT o.*, c.first_name, c.last_name 
 FROM orders o
 JOIN clients c ON o.client_id = c.id;
-
+```
 Добавить новый заказ
+```
 INSERT INTO orders (client_id, employee_id, order_date, total_amount)
 VALUES (1, 2, CURRENT_DATE, 100.00);  -- Замените client_id и employee_id на реальные ID
-
+```
 Получить всех сотрудников, являющихся администраторами
+```
 SELECT * FROM employees
 WHERE is_admin = TRUE;
-
+```
 Получить все предоставляемые услуги
+```
 SELECT * FROM services;
-
+```
 Удалить услугу
+```
 DELETE FROM services
 WHERE service_id = 1;  -- Замените на фактический ID услуги
-
+```
 ## Разработка интерфейса.
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-02.png)
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-08.png)
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-20.png)
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-20.png|)
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-24.png)
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-28.png)
+![image](https://github.com/SVK-314/pop/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-03-15%2012-02-31.png)
 
-## Назначение прав доступа.
-
-## Создание индексов.
 
 ## Разработка стратегии резервного копирования базы данных
+
+Для защиты данных от сбоев и потерь необходимо разработать стратегию регулярного резервного копирования. Для PostgreSQL основными методами являются:
+
+- **Ежедневное логическое резервное копирование с помощью pg_dump** — позволяет создавать бэкап базы данных в формате SQL. Эти резервные копии можно хранить на удаленном сервере или в облаке.
+
+Пример ежедневного резервного копирования:
+```
+pg_dump -U inventorybd  -F c -b -v -f "/backups/backup_$(date +\%Y\%m\%d).backup" inventorybd 
+```
+- **Полное физическое резервное копирование раз в неделю с использованием pg_basebackup** — особенно полезно для больших объемов данных, так как обеспечивает быстрое восстановление базы данных.
+
+Пример команды:
+```
+pg_basebackup -U inventorybd  -D /path/to/backup -Ft -z -P
+```
+- **Проверка и тестирование восстановлений** — резервное копирование должно регулярно тестироваться на восстановление, чтобы убедиться в работоспособности резервных копий. Это критически важно для обеспечения постоянной доступности и надежности данных.
+
+Стратегия резервного копирования должна включать хранение нескольких копий данных на случай различных инцидентов, таких как сбой оборудования или ошибка администратора.
+
